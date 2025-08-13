@@ -1,0 +1,158 @@
+{
+  "name": "vim-flash",
+  "displayName": "Vim-Flash",
+  "description": "Jump to any position on the screen blazingly fast",
+  "icon": "media/icon.png",
+  "version": "1.0.1",
+  "engines": {
+    "vscode": "^1.102.3"
+  },
+  "galleryBanner": {
+    "color": "#0b151b",
+    "theme": "dark"
+  },
+  "categories": [
+    "Keymaps",
+    "Other"
+  ],
+  "keywords": [
+    "vim",
+    "flash",
+    "bookmarks",
+    "keymaps"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pmburov/vim-flash"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:type"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "keybindings": [
+       {
+        "key": "escape",
+        "command": "vim-flash.stop",
+        "when": "editorTextFocus && vim-flash.mode === input"
+      },
+      {
+        "key": "backspace",
+        "command": "vim-flash.backspace",
+        "when": "editorTextFocus && vim-flash.mode === input"
+      },
+      {
+        "key": "ctrl+'",
+        "command": "vim-flash.go",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+ctrl+'",
+        "command": "vim-flash.select",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "alt+]",
+        "command": "vim-flash.up",
+        "when": "editorTextFocus && vim-flash.mode === input"
+      },
+      {
+        "key": "alt+[",
+        "command": "vim-flash.down",
+        "when": "editorTextFocus && vim-flash.mode === input"
+      }
+    ],
+    "commands": [
+      {
+        "command": "vim-flash.go",
+        "title": "Vim-Flash: Go"
+      },
+      {
+        "command": "vim-flash.select",
+        "title": "Vim-Flash: Go with selection"
+      },
+      {
+        "command": "vim-flash.up",
+        "title": "Vim-Flash: Line up"
+      },
+      {
+        "command": "vim-flash.down",
+        "title": "Vim-Flash: Line down"
+      }
+    ],
+    "configuration": {
+      "title": "Vim-Flash",
+      "properties": {
+        "vim-flash.caseSensitive": {
+          "type": "boolean",
+          "default": false,
+          "description": "When enabled, search matches will be case sensitive"
+        },
+        "vim-flash.lineHugsTheContent": {
+          "type": "boolean",
+          "default": false,
+          "description": "Up/down line labels start where the content starts instead of the very beginning of the line"
+        },
+        "vim-flash.dimOpacity": {
+          "type": "string",
+          "default": "0.65",
+          "description": "Color used to dim text"
+        },
+        "vim-flash.matchColor": {
+          "type": "string",
+          "default": "#3e68d7",
+          "description": "Color used for matched text"
+        },
+        "vim-flash.matchFontWeight": {
+          "type": "string",
+          "default": "bold",
+          "description": "Font weight for matched text"
+        },
+        "vim-flash.labelColor": {
+          "type": "string",
+          "default": "#ffffff",
+          "description": "Color used for label text"
+        },
+        "vim-flash.labelBackgroundColor": {
+          "type": "string",
+          "default": "#ff007c",
+          "description": "Background color for labels"
+        },
+        "vim-flash.labelQuestionBackgroundColor": {
+          "type": "string",
+          "default": "#3E68D7",
+          "description": "Background color for question labels"
+        },
+        "vim-flash.labelFontWeight": {
+          "type": "string",
+          "default": "bold",
+          "description": "Font weight for label text"
+        },
+        "vim-flash.labelKeys": {
+          "type": "string",
+          "default": "asdfqwerzxcvkltgbuiopjnmyhASDFQWERZXCVKLTGBUIOPJNMYH0123456789!@#$%^&*()-_=+[]{}|;:'\",.<>/`~\\",
+          "description": "Characters to use for labels"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts --fix",
+    "update": "npx npm-check-updates -i",
+    "deps": "npm i -g @vscode/vsce",
+    "pack": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@types/node": "^24.1.0",
+    "@types/vscode": "^1.102.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.38.0"
+  }
+}
