@@ -2,6 +2,7 @@
   "name": "vim-flash",
   "displayName": "Vim-Flash",
   "description": "Jump to any position on the screen blazingly fast",
+  "publisher": "Pavel",
   "icon": "media/icon.png",
   "version": "1.0.1",
   "engines": {
